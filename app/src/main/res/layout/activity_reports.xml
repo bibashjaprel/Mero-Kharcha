@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/primary_bg"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Spending Report"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_main"
+        android:fontFamily="sans-serif-black"
+        android:layout_marginBottom="32dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/layoutCategoryStats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- Programmatically added category rows will go here -->
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Back to Dashboard"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:backgroundTint="@color/accent_color"
+        android:textColor="@color/white"
+        app:cornerRadius="16dp"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>

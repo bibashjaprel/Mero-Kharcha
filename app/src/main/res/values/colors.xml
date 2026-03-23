@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="primary_bg">#F2F2F7</color>
+    <color name="secondary_bg">#F2F2F7</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="text_main">#000000</color>
+    <color name="text_secondary">#8E8E93</color>
+    <color name="accent_color">#000000</color>
+    <color name="expense_red">#FF3B30</color>
+    
+    <!-- Settings Icon Colors -->
+    <color name="icon_blue">#007AFF</color>
+    <color name="icon_orange">#FF9500</color>
+    <color name="icon_pink">#FF2D55</color>
+    <color name="icon_purple">#AF52DE</color>
+    <color name="icon_green">#34C759</color>
+    <color name="icon_indigo">#5856D6</color>
+</resources>

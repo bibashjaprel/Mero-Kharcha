@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/primary_bg"
+    android:padding="24dp">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="16dp">
+
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            app:tint="@color/text_main" />
+
+        <TextView
+            android:id="@+id/tvHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Expense"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:textColor="@color/text_main" />
+
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_delete"
+            app:tint="@color/expense_red"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <!-- Amount Display -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvAmountDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rs. 0"
+            android:textSize="64sp"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/text_main" />
+
+        <TextView
+            android:id="@+id/btnSelectCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/pill_bg"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="10dp"
+            android:text="🍔 Food"
+            android:textColor="@color/text_main"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etNote"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="What for?"
+            android:gravity="center"
+            android:background="@null"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Numeric Keypad -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:padding="8dp"
+        android:background="@color/secondary_bg">
+
+        <Button style="@style/KeypadButton" android:text="1" />
+        <Button style="@style/KeypadButton" android:text="2" />
+        <Button style="@style/KeypadButton" android:text="3" />
+        <Button style="@style/KeypadButton" android:text="4" />
+        <Button style="@style/KeypadButton" android:text="5" />
+        <Button style="@style/KeypadButton" android:text="6" />
+        <Button style="@style/KeypadButton" android:text="7" />
+        <Button style="@style/KeypadButton" android:text="8" />
+        <Button style="@style/KeypadButton" android:text="9" />
+        <Button style="@style/KeypadButton" android:text="." />
+        <Button style="@style/KeypadButton" android:text="0" />
+        <Button
+            android:id="@+id/btnDone"
+            style="@style/KeypadButton"
+            android:text="✓"
+            app:backgroundTint="@color/accent_color"
+            android:textColor="@color/white" />
+    </GridLayout>
+
+</LinearLayout>
