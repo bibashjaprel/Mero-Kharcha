@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,11 +22,13 @@ import androidx.core.content.FileProvider;
 import com.example.merokharcha.R;
 import com.example.merokharcha.database.DBHelper;
 import com.example.merokharcha.models.Expense;
+import com.example.merokharcha.utils.CurrencyUtils;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Locale;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -169,16 +173,32 @@ public class ProfileActivity extends AppCompatActivity {
     private void showBudgetDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Set Monthly Budget");
+        
         final EditText input = new EditText(this);
+        float currentBudget = preferences.getFloat("monthly_budget", 0);
+        
+        // Show current budget in hint/text for reference
+        if (currentBudget > 0) {
+            input.setText(String.format(Locale.getDefault(), "%.0f", currentBudget));
+        }
+        
         input.setHint("Enter Amount (Rs.)");
-        input.setPadding(50, 50, 50, 50);
+        input.setPadding(60, 40, 60, 40);
         input.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
         builder.setView(input);
+        
         builder.setPositiveButton("Save", (dialog, which) -> {
             String budgetStr = input.getText().toString();
             if (!budgetStr.isEmpty()) {
-                preferences.edit().putFloat("monthly_budget", Float.parseFloat(budgetStr)).apply();
-                Toast.makeText(this, "Budget Updated", Toast.LENGTH_SHORT).show();
+                try {
+                    float newBudget = Float.parseFloat(budgetStr);
+                    preferences.edit().putFloat("monthly_budget", newBudget).apply();
+                    
+                    String formatted = CurrencyUtils.formatCurrency(newBudget);
+                    Toast.makeText(this, "Budget updated to " + formatted, Toast.LENGTH_SHORT).show();
+                } catch (NumberFormatException e) {
+                    Toast.makeText(this, "Invalid amount", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         builder.setNegativeButton("Cancel", null);

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.merokharcha.R;
 import com.example.merokharcha.database.DBHelper;
 import com.example.merokharcha.models.Expense;
+import com.example.merokharcha.utils.CurrencyUtils;
 import java.util.List;
 import java.util.Locale;
 
@@ -57,7 +58,7 @@ public class ReportsActivity extends AppCompatActivity {
                 ProgressBar pbProgress = catView.findViewById(R.id.pbCatProgress);
 
                 tvName.setText(category);
-                tvAmount.setText(String.format(Locale.getDefault(), "Rs. %.0f", catTotal));
+                tvAmount.setText(CurrencyUtils.formatCurrency(catTotal));
                 
                 int percentage = (int) ((catTotal / grandTotal) * 100);
                 pbProgress.setProgress(percentage);

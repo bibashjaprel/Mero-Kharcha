@@ -106,11 +106,22 @@
         <Button style="@style/KeypadButton" android:text="." />
         <Button style="@style/KeypadButton" android:text="0" />
         <Button
-            android:id="@+id/btnDone"
+            android:id="@+id/btnBackspace"
             style="@style/KeypadButton"
-            android:text="✓"
-            app:backgroundTint="@color/accent_color"
-            android:textColor="@color/white" />
+            android:text="⌫" />
     </GridLayout>
+
+    <Button
+        android:id="@+id/btnDone"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:text="Save Expense"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/accent_color"
+        android:textColor="@color/white"
+        app:cornerRadius="12dp" />
 
 </LinearLayout>

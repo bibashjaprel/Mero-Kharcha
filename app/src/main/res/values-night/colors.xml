@@ -3,9 +3,11 @@
     <color name="black">#FFFFFF</color>
     <color name="white">#000000</color>
     <color name="primary_bg">#000000</color>
+    <color name="secondary_bg">#1C1C1E</color>
     <color name="card_bg">#1C1C1E</color>
     <color name="text_main">#FFFFFF</color>
     <color name="text_secondary">#8E8E93</color>
     <color name="accent_color">#FFFFFF</color>
     <color name="expense_red">#FF453A</color>
+    <color name="progress_track">#2C2C2E</color>
 </resources>

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.merokharcha.R;
 import com.example.merokharcha.activities.AddExpenseActivity;
 import com.example.merokharcha.models.Expense;
+import com.example.merokharcha.utils.CurrencyUtils;
 import java.util.List;
 
 public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ViewHolder> {
@@ -35,7 +36,8 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ViewHold
         Expense expense = expenseList.get(position);
         holder.tvCategory.setText(expense.getCategory());
         holder.tvNote.setText(expense.getNote());
-        holder.tvAmount.setText("Rs. " + String.format("%.0f", expense.getAmount()));
+        holder.tvAmount.setText(CurrencyUtils.formatCurrency(expense.getAmount()));
+        holder.tvDate.setText(expense.getDate());
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, AddExpenseActivity.class);
@@ -54,13 +56,14 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ViewHold
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvCategory, tvNote, tvAmount;
+        TextView tvCategory, tvNote, tvAmount, tvDate;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvCategory = itemView.findViewById(R.id.tvCategory);
             tvNote = itemView.findViewById(R.id.tvNote);
             tvAmount = itemView.findViewById(R.id.tvAmount);
+            tvDate = itemView.findViewById(R.id.tvDate);
         }
     }
 }

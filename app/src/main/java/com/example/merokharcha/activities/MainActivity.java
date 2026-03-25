@@ -15,6 +15,7 @@ import com.example.merokharcha.R;
 import com.example.merokharcha.adapters.ExpenseAdapter;
 import com.example.merokharcha.database.DBHelper;
 import com.example.merokharcha.models.Expense;
+import com.example.merokharcha.utils.CurrencyUtils;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import java.util.List;
 import java.util.Locale;
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dbHelper = new DBHelper(this);
-        // Fixed: Matching SharedPreferences name with ProfileActivity
         preferences = getSharedPreferences("MeroKharchaPrefs", MODE_PRIVATE);
 
         ExtendedFloatingActionButton fabAdd = findViewById(R.id.fabAdd);
@@ -86,17 +86,16 @@ public class MainActivity extends AppCompatActivity {
             }
             
             if (tvTotalExpense != null)
-                tvTotalExpense.setText(String.format(Locale.getDefault(), "Rs. %.0f", total));
+                tvTotalExpense.setText(CurrencyUtils.formatCurrency(total));
             
             float budget = preferences.getFloat("monthly_budget", 0);
             if (tvBudget != null)
-                tvBudget.setText(String.format(Locale.getDefault(), "Rs. %.0f", (double) budget));
+                tvBudget.setText(CurrencyUtils.formatCurrency((double) budget));
             
             double remaining = budget - total;
             if (tvRemaining != null) {
-                tvRemaining.setText(String.format(Locale.getDefault(), "Rs. %.0f", remaining));
+                tvRemaining.setText(CurrencyUtils.formatCurrency(remaining));
                 
-                // Fixed: Using R.color.white to match theme flipping
                 int colorRes = (remaining < 0) ? R.color.expense_red : R.color.white;
                 tvRemaining.setTextColor(ContextCompat.getColor(this, colorRes));
             }
